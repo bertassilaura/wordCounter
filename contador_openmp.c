@@ -1,15 +1,17 @@
+// compilar com gcc -fopenmp contador_openmp.c -o count
+// executar com /.count
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <sys/time.h>
 #include <omp.h>
-#define OMP_NUM_THREADS 19
+#define OMP_NUM_THREADS 4
 
 int ocorrencias_palavras_chave[19];
 char palavras_chave[50][100] = {"death", "that", "never", "soul", "distressful", "divine", "time", "god", "inferno", "make", "escape",
-                                "spirits", "lamentations", "blessed", "manifest", "angelical", "and", "canto", "lord"};
-int qtd_palavras = 19;
+                                "spirits", "lamentations", "blessed", "manifest", "angelical", "and", "canto", "lord", "little", "heart", "road", "fear", "water", "body", "foot", "light", "skin", "face", "sun", "love", "good", "hope", "beast", "hour"};
+int qtd_palavras = 35;
 
 char *texto(char *arquivo)
 {
@@ -47,6 +49,7 @@ int main()
 {
 
     struct timeval t1, t2;
+
     gettimeofday(&t1, NULL);
 
     char *text = texto("divinacomedia.txt");

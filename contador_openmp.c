@@ -1,17 +1,16 @@
 // compilar com gcc -fopenmp contador_openmp.c -o count
-// executar com /.count
+// executar com ./count
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <sys/time.h>
 #include <omp.h>
-#define OMP_NUM_THREADS 4
+#define OMP_NUM_THREADS 16
 
 int ocorrencias_palavras_chave[19];
-char palavras_chave[50][100] = {"death", "that", "never", "soul", "distressful", "divine", "time", "god", "inferno", "make", "escape",
-                                "spirits", "lamentations", "blessed", "manifest", "angelical", "and", "canto", "lord", "little", "heart", "road", "fear", "water", "body", "foot", "light", "skin", "face", "sun", "love", "good", "hope", "beast", "hour"};
-int qtd_palavras = 35;
+char palavras_chave[50][100] = {"death", "that", "never", "soul", "divine", "time", "god", "inferno", "make", "escape"};
+int qtd_palavras = 10;
 
 char *texto(char *arquivo)
 {
@@ -54,7 +53,7 @@ int main()
 
     char *text = texto("divinacomedia.txt");
 
-#pragma omp parallel for
+#pragma omp parallel for num_threads(OMP_NUM_THREADS)
     for (int i = 0; i < qtd_palavras; i++)
     {
         ocorrencias_palavras_chave[i] = num_ocorrencias(text, palavras_chave[i]); // qtd de ocorrencias da palavra chave procurada

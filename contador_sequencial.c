@@ -1,5 +1,5 @@
 // compilar com gcc -fopenmp contador_sequencial.c -o count
-// executar com /.count
+// executar com ./count
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -7,9 +7,8 @@
 #include <sys/time.h>
 
 int ocorrencias_palavras_chave[4];
-char palavras_chave[50][100] = {"death", "that", "never", "soul", "distressful", "divine", "time", "god", "inferno", "make", "escape",
-                                "spirits", "lamentations", "blessed", "manifest", "angelical", "and", "canto", "lord", "little", "heart", "road", "fear", "water", "body", "foot", "light", "skin", "face", "sun", "love", "good", "hope", "beast", "hour"};
-int qtd_palavras = 35;
+char palavras_chave[50][100] = {"death", "that", "never", "soul", "divine", "time", "god", "inferno", "make", "escape"};
+int qtd_palavras = 10;
 
 char *texto(char *arquivo)
 {
@@ -68,3 +67,5 @@ int main()
 
     return 0;
 }
+
+// {"death", "that", "never", "soul", "divine", "time", "god", "inferno", "make", "escape", "spirits", "blessed", "manifest", "angelical", "and", "canto", "lord", "heart", "road", "fear", "water", "body", "foot", "light", "skin", "face", "sun", "love", "good", "hope", "beast", "hour", "breath", "good", "live", "people", "dark", "have", "what", "way"};

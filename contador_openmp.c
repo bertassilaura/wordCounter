@@ -30,11 +30,11 @@ int num_ocorrencias(char *linha, char *palavra)
 
     for (int i = 0; i < strlen(linha); i++)
     {
-        if (linha[i] == palavra[igual])
-            ++igual;
+        if (linha[i] == palavra[igual]) // começa na linha, posição 0 e na posição 0 da palavra
+            ++igual; // se é igual, incrementa
         else
             igual = 0;
-        if (igual == strlen(palavra))
+        if (igual == strlen(palavra)) // se igual for igual ao tamanho da palavra, incrementa contador
         {
             ++cont;
             igual = 0;
@@ -57,12 +57,12 @@ int main()
         ocorrencias_palavras_chave[i] = num_ocorrencias(text, palavras_chave[i]); // qtd de ocorrencias da palavra chave procurada
     }
 
+    gettimeofday(&t2, NULL);
     for (int j = 0; j < qtd_palavras; j++)
     {
         printf("%s - %d vez(es).\n\n", palavras_chave[j], ocorrencias_palavras_chave[j]);
     }
 
-    gettimeofday(&t2, NULL);
     double t_total = (t2.tv_sec - t1.tv_sec) + ((t2.tv_usec - t1.tv_usec) / 1000000.0);
     printf("tempo total = %f\n", t_total);
 
